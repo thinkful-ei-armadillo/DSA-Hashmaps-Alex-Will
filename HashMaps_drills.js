@@ -1,6 +1,7 @@
 'use strict';
 
 const { HashMap } =  require('./HashMap');
+const { HashMap_SepChain } = require('./HashMap_SepChain');
 
 HashMap.MAX_LOAD_RATIO = 0.5;
 HashMap.SIZE_RATIO = 3;
@@ -86,7 +87,7 @@ function removeDuplicates(str) {
   return newStr;
 }
 
-console.log(removeDuplicates('google all that you think can think of'));
+// console.log(removeDuplicates('google all that you think can think of'));
 
 
 // Drill #5: Any permutation a palindrome
@@ -109,4 +110,17 @@ function palindrome(str) {
   }
 }
 
-console.log(palindrome('racecar'));
+// console.log(palindrome('racecar'));
+
+
+function anagrams(input) {
+  let map = new HashMap_SepChain();
+  input.forEach(word => {
+    map.set(word, '');
+  });
+  let result = [];
+  map._hashTable.forEach(arr => result.push(arr.map(obj => obj.key )));
+  return result;
+}
+
+console.log(anagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
