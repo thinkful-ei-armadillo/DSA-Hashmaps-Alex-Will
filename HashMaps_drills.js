@@ -87,3 +87,26 @@ function removeDuplicates(str) {
 }
 
 console.log(removeDuplicates('google all that you think can think of'));
+
+
+// Drill #5: Any permutation a palindrome
+// input: 'acecarr'
+// output: true
+
+function palindrome(str) {
+  const result = new Map();
+  for (let i = 0; i < str.length; i++) {
+    // console.log(result);
+    if(!result.delete(str[i])) {
+      result.set(str[i], 1);
+    }
+  }
+  // console.log(result.size, result);
+  if(result.size <= 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(palindrome('racecar'));
