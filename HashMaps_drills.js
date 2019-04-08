@@ -75,12 +75,10 @@ const WhatDoesThisDo = function(){
 // Drill #4: Remove duplicates:
 
 function removeDuplicates(str) {
-  const map = new HashMap();
+  const map = new Map();
   let newStr = '';
   str.split('').forEach(letter => {
-    try {
-      map.get(letter);
-    } catch(err) {
+    if (!map.has(letter)) {
       map.set(letter, '');
       newStr += letter;
     }
