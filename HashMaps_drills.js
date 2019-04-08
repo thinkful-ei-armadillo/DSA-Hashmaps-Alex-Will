@@ -32,7 +32,7 @@ function main() {
   // we go over our capacity load ratio (50%) of 8 and we have to multiply that by our size_ratio value of 3 and thats how we get 24.
 }
 
-main();
+// main();
 
 
 
@@ -54,7 +54,7 @@ const WhatDoesThisDo = function(){
   console.log(map2.get(str3));
 };
 
-WhatDoesThisDo();
+// WhatDoesThisDo();
 // expected = map1 = 20, map2 = 10
 
 
@@ -71,3 +71,21 @@ WhatDoesThisDo();
 
 // [null, [28, 19, 10], 20, 12, null, 5, [15, 33], null, 17]
 
+
+// Drill #4: Remove duplicates:
+
+function removeDuplicates(str) {
+  const map = new HashMap();
+  let newStr = '';
+  str.split('').forEach(letter => {
+    try {
+      map.get(letter);
+    } catch(err) {
+      map.set(letter, '');
+      newStr += letter;
+    }
+  });
+  return newStr;
+}
+
+console.log(removeDuplicates('google all that you think can think of'));
