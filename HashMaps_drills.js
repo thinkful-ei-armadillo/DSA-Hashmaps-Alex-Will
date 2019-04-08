@@ -123,4 +123,41 @@ function anagrams(input) {
   return result;
 }
 
-console.log(anagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+// console.log(anagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+
+HashMap_SepChain.MAX_LOAD_RATIO = 0.5;
+HashMap_SepChain.SIZE_RATIO = 3;
+
+function sepMain() {
+
+  const lor = new HashMap_SepChain();
+  const data = [{'Hobbit': 'Bilbo'}, {'Hobbit': 'Frodo'},
+    {'Wizard': 'Gandolf'}, {'Human': 'Aragon'}, {'Elf': 'Legolas'}, {'Maiar': 'The Necromancer'},
+    {'Maiar': 'Sauron'}, {'RingBearer': 'Gollum'}, {'LadyOfLight': 'Galadriel'}, {'HalfElven': 'Arwen'},
+    {'Ent': 'Treebeard'}];
+  data.forEach(obj => {
+    const key = Object.keys(obj)[0];
+    lor.set(key, obj[key]);
+  });
+  // let result = [];
+  // lor._hashTable.forEach(arr => result.push(arr.map(obj => obj.key )));
+  // console.log(result);
+
+  // console.log(lor);
+  //Print your hash map and notice the length and items that are hashed in your hash map. Have you hashed all the items you were asked to?
+  //There are 11 items, but length is 9. There are 5 arrays with 2 arrays containing 3 objects (chaining)
+
+  //Retrieve the value that is hashed in the key "Maiar" and Hobbit.
+  // console.log(lor.get('Maiar'));
+  // console.log(lor.get('Hobbit'));
+
+  //What are the values of Maiar and Hobbit that you have? Is there a discrepancy? Explain your answer.
+  // we are returning Sauron and Frodo because we have 2 keys storing 2 different values and its only showing the latter value due to not resolving collisions
+
+  // What is the capacity of your hash table after you have hashed all the above items? Explain your answer.
+  // console.log(lor._capacity);
+  // capacity = 8
+  // We are using separate chaining for collision resolution so the storage structure is different
+}
+
+sepMain();

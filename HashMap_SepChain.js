@@ -23,7 +23,6 @@ class HashMap_SepChain {
     }
   }
 
-
   // function that takes a string and hashes it
   static _hashString(string) {
     let hash = 5381;
@@ -45,9 +44,15 @@ class HashMap_SepChain {
 
     if (!this._hashTable[index]) {
       this._hashTable[index] = [];
-      this.length++;
     }
 
+    for (let i = 0; i < this._hashTable[index].length; i++) {
+      if (this._hashTable[index][i].key === key) {
+        return this._hashTable[index][i].value = value;
+      }
+    }
+
+    this.length++;
     this._hashTable[index].push({
       key,
       value
@@ -62,7 +67,7 @@ class HashMap_SepChain {
 
     for (const slot of oldSlots) {
       if (slot !== undefined) {
-        this.set(slot.key, slot.value);
+        slot.forEach(obj => this.set(obj.key, obj.value));
       }
     }
   }
